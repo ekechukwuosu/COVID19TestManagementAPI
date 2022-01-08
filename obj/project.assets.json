@@ -7514,36 +7514,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oluchukwu\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "/Users/ekechukwuosu/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oluchukwu\\source\\repos\\CastillePCRTestManagement\\CastillePCRTestManagement.csproj",
+      "projectUniqueName": "/Users/ekechukwuosu/Documents/GitHub/COVID19TestManagementAPI/CastillePCRTestManagement.csproj",
       "projectName": "CastillePCRTestManagement",
-      "projectPath": "C:\\Users\\Oluchukwu\\source\\repos\\CastillePCRTestManagement\\CastillePCRTestManagement.csproj",
-      "packagesPath": "C:\\Users\\Oluchukwu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oluchukwu\\source\\repos\\CastillePCRTestManagement\\obj\\",
+      "projectPath": "/Users/ekechukwuosu/Documents/GitHub/COVID19TestManagementAPI/CastillePCRTestManagement.csproj",
+      "packagesPath": "/Users/ekechukwuosu/.nuget/packages/",
+      "outputPath": "/Users/ekechukwuosu/Documents/GitHub/COVID19TestManagementAPI/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Oluchukwu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/Users/ekechukwuosu/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\Oluchukwu\\.nuget\\packages\\zenith.uipath.custom.activities": {},
-        "C:\\Users\\Oluchukwu\\Documents\\Zenith Training Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7613,7 +7605,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.404/RuntimeIdentifierGraph.json"
       }
     }
   }

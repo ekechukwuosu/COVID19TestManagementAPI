@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CastillePCRTestManagement.Repository.Implementation
@@ -14,6 +15,7 @@ namespace CastillePCRTestManagement.Repository.Implementation
     {
         private readonly ILogger<TestBookingRepository> _logger;
         public readonly AppDBContext _dbContext;
+       
 
         public TestBookingRepository(ILogger<TestBookingRepository> logger, AppDBContext appDBContext)
         {
@@ -23,13 +25,17 @@ namespace CastillePCRTestManagement.Repository.Implementation
 
         public async Task<bool> BookTest(BookingInformation booking)
         {
+            SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
             bool flag = false;
+
             try
             {
+                //Asynchronously wait to enter the Semaphore. If no-one has been granted access to the Semaphore, code execution will proceed, otherwise this thread waits here until the semaphore is released 
+                await semaphoreSlim.WaitAsync();
+
                 booking.CreateDate = DateTime.Now;
                 var result = _dbContext.BookingInformation.Add(booking);
-
-                var bookingMasterObject = _dbContext.BookingMaster.Where(a => a.Date == booking.BookingDate && a.Location == booking.Location).FirstOrDefault();
+                var bookingMasterObject = await _dbContext.BookingMaster.Where(a => a.Date == booking.BookingDate && a.Location == booking.Location).FirstOrDefaultAsync();
 
                 bookingMasterObject.UsedSpace = bookingMasterObject.UsedSpace + 1;
 
@@ -62,9 +68,13 @@ namespace CastillePCRTestManagement.Repository.Implementation
 
         public async Task<bool> CancelTest(long id)
         {
+            SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
             bool flag = false;
             try
             {
+                //Asynchronously wait to enter the Semaphore. If no-one has been granted access to the Semaphore, code execution will proceed, otherwise this thread waits here until the semaphore is released 
+                await semaphoreSlim.WaitAsync();
+
                 var booking = _dbContext.BookingInformation.Where(a => a.Id == id && string.IsNullOrEmpty(a.CancelledStatus )).FirstOrDefault();
 
                 booking.CancelledStatus = "Yes";
@@ -95,7 +105,7 @@ namespace CastillePCRTestManagement.Repository.Implementation
             bool flag = false;
             try
             {
-                var bookingObject =  _dbContext.BookingInformation.Where(a => a.BookingDate == booking.BookingDate && a.Location == booking.Location && a.FirstName == booking.FirstName && a.LastName == booking.LastName).FirstOrDefault();
+                var bookingObject = await _dbContext.BookingInformation.Where(a => a.BookingDate == booking.BookingDate && a.Location == booking.Location && a.FirstName == booking.FirstName && a.LastName == booking.LastName).FirstOrDefaultAsync();
                 if(bookingObject != null)
                 {
                     flag = true;
@@ -114,7 +124,7 @@ namespace CastillePCRTestManagement.Repository.Implementation
             bool flag = false;
             try
             {
-                var bookingObject = _dbContext.BookingInformation.Where(a => a.Id == id && a.CancelledStatus != "Yes").FirstOrDefault();
+                var bookingObject = await _dbContext.BookingInformation.Where(a => a.Id == id && a.CancelledStatus != "Yes").FirstOrDefaultAsync();
                 if (bookingObject != null)
                 {
                     flag = true;
@@ -133,7 +143,7 @@ namespace CastillePCRTestManagement.Repository.Implementation
             bool flag = false;
             try
             {
-                var bookingObject = _dbContext.BookingInformation.Where(a => a.Id == id).FirstOrDefault();
+                var bookingObject = await _dbContext.BookingInformation.Where(a => a.Id == id).FirstOrDefaultAsync();
                 if (bookingObject != null)
                 {
                     flag = true;
@@ -152,7 +162,7 @@ namespace CastillePCRTestManagement.Repository.Implementation
             bool flag = false;
             try
             {
-                var bookingObject = _dbContext.BookingInformation.Where(a => a.Id == id).FirstOrDefault();
+                var bookingObject = await _dbContext.BookingInformation.Where(a => a.Id == id).FirstOrDefaultAsync();
 
                 bookingObject.Result = result;
                 bookingObject.ResultDate = DateTime.Now;

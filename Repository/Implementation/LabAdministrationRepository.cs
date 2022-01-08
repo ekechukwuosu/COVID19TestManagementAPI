@@ -54,7 +54,7 @@ namespace CastillePCRTestManagement.Repository.Implementation
             bool flag = false;
             try
             {
-                var bookingmaster = _dbContext.BookingMaster.Where(a =>  a.Date == bookingInformation.BookingDate && a.Location == bookingInformation.Location).FirstOrDefault();
+                var bookingmaster =  await _dbContext.BookingMaster.Where(a =>  a.Date == bookingInformation.BookingDate && a.Location == bookingInformation.Location).FirstOrDefaultAsync();
                 if(bookingmaster != null)
                 {
                     if (bookingmaster.UsedSpace < bookingmaster.Space)

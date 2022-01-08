@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{E591F520-BF0F-4C7F-BE90-D4E55A908797}|Default">
+  <MonoDevelop.Ide.ItemProperties.CastillePCRTestManagement PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Repository/Implementation/ReportingRepository.cs">
+    <Files>
+      <File FileName="Repository/Implementation/LabAdministrationRepository.cs" Line="57" Column="187" />
+      <File FileName="Repository/Implementation/TestBookingRepository.cs" Line="68" Column="31" />
+      <File FileName="Repository/Implementation/ReportingRepository.cs" Line="35" Column="43" />
+      <File FileName="Repository/Implementation/LocationsRepository.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="CastillePCRTestManagement" expanded="True">
+            <Node name="CastillePCRTestManagement" expanded="True">
+              <Node name="Repository" expanded="True">
+                <Node name="Implementation" expanded="True">
+                  <Node name="ReportingRepository.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

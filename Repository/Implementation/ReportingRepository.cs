@@ -26,19 +26,17 @@ namespace CastillePCRTestManagement.Repository.Implementation
             
             try
             {
-                var allocations = await _dbContext.BookingMaster.ToListAsync();
-                var allbookings = await _dbContext.BookingInformation.ToListAsync();
-                foreach (var item in allocations)
+                foreach (var item in _dbContext.BookingMaster)
                 {
                     Reporting r = new Reporting();
                     r.Date = item.Date;
                     r.Location = item.Location;
                     r.Capacity = item.Space;
-                    r.CancelledBookings = allbookings.Where(a => a.BookingDate == item.Date && a.Location == item.Location && a.CancelledStatus == "Yes").Count();
-                    r.ActualBookings = allbookings.Where(b => b.BookingDate == item.Date && b.Location == item.Location && b.CancelledStatus != "Yes").Count();
-                    r.CompletedBookings = allbookings.Where(c => c.BookingDate == item.Date && c.Location == item.Location && !string.IsNullOrEmpty(c.Result)).Count();
-                    r.PositiveCases = allbookings.Where(d => d.BookingDate == item.Date && d.Location == item.Location && d.Result == "Positive").Count();
-                    r.NegativeCases = allbookings.Where(e => e.BookingDate == item.Date && e.Location == item.Location && e.Result == "Negative").Count();
+                    r.CancelledBookings = _dbContext.BookingInformation.Where(a => a.BookingDate == item.Date && a.Location == item.Location && a.CancelledStatus == "Yes").Count();
+                    r.ActualBookings = _dbContext.BookingInformation.Where(b => b.BookingDate == item.Date && b.Location == item.Location && b.CancelledStatus != "Yes").Count();
+                    r.CompletedBookings = _dbContext.BookingInformation.Where(c => c.BookingDate == item.Date && c.Location == item.Location && !string.IsNullOrEmpty(c.Result)).Count();
+                    r.PositiveCases = _dbContext.BookingInformation.Where(d => d.BookingDate == item.Date && d.Location == item.Location && d.Result == "Positive").Count();
+                    r.NegativeCases = _dbContext.BookingInformation.Where(e => e.BookingDate == item.Date && e.Location == item.Location && e.Result == "Negative").Count();
 
                     report.Add(r);
                 }
